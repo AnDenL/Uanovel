@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -9,38 +8,46 @@ public class DialogManager : MonoBehaviour
 
     private Dialog current;
     private TextMeshProUGUI textmp;
+    private TextEffects effects;
     private Coroutine coroutine;
     private bool isPlaying;
 
     private void Start()
     {
         textmp = GetComponentInChildren<TextMeshProUGUI>();
+        effects = textmp.GetComponent<TextEffects>();
 
-        coroutine = StartCoroutine(Show(start));
+        Show(start);
     }
 
     public void Click()
     {
         if (isPlaying) Skip();
-        else if (current.next.Length > 0) coroutine = StartCoroutine(Show(current.next[0].Value));
+        else if (current.next.Length > 0) Show(current.next[0].Value);
     }
 
-    private IEnumerator Show(Dialog dialog)
+    private void Show(Dialog dialog)
     {
         History.Add(dialog);
-        textmp.text = " ";
-        float speed = 1 / dialog.speed;
-
+        
         current = dialog;
+        effects.GetTags(dialog);
+
+        coroutine = StartCoroutine(ShowCoroutine(dialog.clearText, 1 / dialog.speed));
+    }
+
+    private IEnumerator ShowCoroutine(string Text, float speed)
+    {
+        textmp.text = "";
 
         int i = 0;
 
         isPlaying = true;
 
-        while (i < dialog.text.Length)
+        while (i < Text.Length)
         {
             yield return new WaitForSeconds(speed);
-            textmp.text += dialog.text[i];
+            textmp.text += Text[i];
             i++;
         }
 
@@ -51,7 +58,7 @@ public class DialogManager : MonoBehaviour
     {
         if (coroutine == null) return;
 
-        textmp.text = current.text;
+        textmp.text = current.clearText;
         isPlaying = false;
         StopCoroutine(coroutine);
     }

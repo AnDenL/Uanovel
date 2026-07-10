@@ -5,7 +5,9 @@ using UnityEngine;
 public class Dialog : ScriptableObject
 {
     public string text;
+    public string clearText;
     public float speed = 20;
+    public Sprite icon;
 
     public Option<Dialog>[] next;
 }

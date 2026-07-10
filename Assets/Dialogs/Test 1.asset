@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82967ff42211e448a730d29285df6af, type: 3}
   m_Name: Test 1
   m_EditorClassIdentifier: 
-  text: Hov a u?????
+  text: /1Wobble woble /2Wave wave /3Shake shake
+  clearText: Hov a u?????
   speed: 10
+  icon: {fileID: 0}
   next: []

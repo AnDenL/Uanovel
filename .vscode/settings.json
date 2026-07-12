@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "uanovel.sln"
+    "dotnet.defaultSolution": "Uanovel.sln"
 }

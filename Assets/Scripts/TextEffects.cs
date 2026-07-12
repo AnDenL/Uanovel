@@ -51,12 +51,10 @@ public class TextEffects : MonoBehaviour
                         break;
                 }
                 text = text.Remove(i,2);
-                //offset += 2;
-                i++;
             }
         }
 
-        effects.Add((text.Length + 1, Effect.None));
+        effects.Add((text.Length, Effect.None));
 
         foreach (var item in effects)
         {
@@ -67,7 +65,7 @@ public class TextEffects : MonoBehaviour
         dialog.clearText = text;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (string.IsNullOrWhiteSpace(textMesh.text)) return;
         textMesh.ForceMeshUpdate();
@@ -75,11 +73,11 @@ public class TextEffects : MonoBehaviour
         vertices = mesh.vertices;
 
         effectIndex = 0;
-        current = Effect.None;
 
         for (int i = 0; i < textMesh.textInfo.characterCount; i++)
         {
             TMP_CharacterInfo c = textMesh.textInfo.characterInfo[i];
+            if (!c.isVisible) continue;
 
             int index = c.vertexIndex;
 
@@ -88,6 +86,8 @@ public class TextEffects : MonoBehaviour
                 current = effects[effectIndex].Item2;
                 effectIndex++;
             }
+
+            print($"{i} {current}");
 
             switch (current) {
                 case Effect.Wobble: 
@@ -107,7 +107,7 @@ public class TextEffects : MonoBehaviour
     }
 
     private void Wobble(float time, int i) {
-        Vector3 offset = new Vector2(Mathf.Sin(time*3.3f), Mathf.Cos(time*2.5f))* 5;
+        Vector3 offset = new Vector2(Mathf.Sin(time*3.3f), Mathf.Cos(time*2.5f))* 2;
         vertices[i] += offset;
         vertices[i + 1] += offset;
         vertices[i + 2] += offset;

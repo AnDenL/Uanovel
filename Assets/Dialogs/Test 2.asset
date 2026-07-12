@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b82967ff42211e448a730d29285df6af, type: 3}
-  m_Name: Test
+  m_Name: Test 2
   m_EditorClassIdentifier: 
-  text: Hallloooo!!!!! Hov a u?????
+  text: '/1Wobble '
   clearText: 
-  speed: 20
-  fontSize: 36
+  speed: 10
+  fontSize: 72
   icon: {fileID: 0}
-  next:
-  - name: 
-    Value: {fileID: 11400000, guid: 158a0b7a13fc8e1408157e3d6d107a66, type: 2}
+  next: []

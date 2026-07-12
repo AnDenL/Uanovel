@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: Test 1
   m_EditorClassIdentifier: 
   text: /1Wobble woble /2Wave wave /3Shake shake
-  clearText: Hov a u?????
+  clearText: 
   speed: 10
+  fontSize: 36
   icon: {fileID: 0}
-  next: []
+  next:
+  - name: Wobble
+    Value: {fileID: 11400000, guid: 9e883d1f05efec14792f883fa99d6487, type: 2}
+  - name: Wave
+    Value: {fileID: 11400000, guid: 39e1328b122eeba4da6c23335de49fb3, type: 2}
+  - name: Shake
+    Value: {fileID: 11400000, guid: 904a22ad7e5714742899c825663a32dc, type: 2}

@@ -7,14 +7,15 @@ public class Dialog : ScriptableObject
     public string text;
     public string clearText;
     public float speed = 20;
+    public float fontSize = 36;
     public Sprite icon;
 
-    public Option<Dialog>[] next;
+    public Option[] next;
 }
 
 [Serializable]
-public class Option<T>
+public class Option
 {
     public string name;
-    public T Value;
+    public Dialog Value;
 }

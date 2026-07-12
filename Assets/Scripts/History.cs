@@ -14,6 +14,6 @@ public class History : MonoBehaviour
 
     public static void Add(Dialog dialog)
     {
-        Instantiate(instance.prefab, instance.point);
+        Instantiate(instance.prefab, instance.point).GetComponent<HistoryMessage>().Set(dialog);
     }
 }

@@ -56,11 +56,6 @@ public class TextEffects : MonoBehaviour
 
         effects.Add((text.Length, Effect.None));
 
-        foreach (var item in effects)
-        {
-            print($"{item.Item1} {item.Item2}");
-        }
-        
         this.effects = effects.ToArray();
         dialog.clearText = text;
     }
@@ -86,8 +81,6 @@ public class TextEffects : MonoBehaviour
                 current = effects[effectIndex].Item2;
                 effectIndex++;
             }
-
-            print($"{i} {current}");
 
             switch (current) {
                 case Effect.Wobble: 
